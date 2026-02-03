@@ -1,0 +1,72 @@
+body {
+    background: rgb(135, 206, 235);
+}
+
+#main {
+    display: grid;
+    grid-template: repeat(30, 48px) / repeat(100, 48px);
+}
+
+.cell:hover{
+    border: 1px solid black;
+}
+
+.cell {
+    background-color: rgb(135, 206, 235);
+    background-size: cover;
+}
+
+.leaf {
+    background-image: url("https://guileless-pegasus-d698c6.netlify.app/blocks/oak-leaves.webp");
+}
+
+.tree {
+    background-image: url("https://guileless-pegasus-d698c6.netlify.app/blocks/oak-log.webp");
+}
+
+.grass {
+    background-image: url("https://guileless-pegasus-d698c6.netlify.app/blocks/grass.webp");
+}
+
+.dirt {
+    background-image: url("https://guileless-pegasus-d698c6.netlify.app/blocks/dirt.webp");
+}
+
+.stone {
+    background-image: url("https://guileless-pegasus-d698c6.netlify.app/blocks/stone.webp");
+}
+
+.bedrock {
+    background-image: url("https://guileless-pegasus-d698c6.netlify.app/blocks/bedrock.webp");
+}
+
+#inventory {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 55px;
+    margin-left: 15px;
+}
+
+.inventory {
+    margin-top: 8px;
+    width: 41px;
+    height: 41px;
+    background-size: cover;
+}
+
+.diamond-pickaxe {
+    background-image: url("https://guileless-pegasus-d698c6.netlify.app/blocks/diamond-pickaxe.webp");
+}
+
+.diamond-axe {
+    background-image: url("https://guileless-pegasus-d698c6.netlify.app/blocks/diamond-axe.webp");
+}
+
+.diamond-shovel {
+    background-image: url("https://guileless-pegasus-d698c6.netlify.app/blocks/diamond-shovel.webp");
+}
+
+.shears {
+    background-image: url("https://guileless-pegasus-d698c6.netlify.app/blocks/shears.webp");
+}
