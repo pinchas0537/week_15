@@ -65,29 +65,93 @@ function createMap() {
     }
 }
 
-function removeCell(type) {
+let cursor;
+
+function changeCoursor(target) {
+    document.body.style.cursor = `url(https://guileless-pegasus-d698c6.netlify.app/cursor/${target}.png), auto`;
+    cursor = target
+}
+
+function removeCell(target) {
+    if (
+        (cursor === "diamond-pickaxe" && target[1] === "stone") ||
+        (cursor === "shears" && target[1] === "leaf") ||
+        (cursor === "diamond-axe" && target[1] === "tree") ||
+        (cursor === "diamond-shovel" && (target[1] === "dirt" || target[1] === "grass"))
+    ) {
+        addInventory(target[1])
+        target.remove(target[1])
+        target.remove("leaf")
+    }
+}
+
+const countObj = {
+    leaf: 0,
+    tree: 0,
+    grass: 0,
+    dirt: 0,
+    stone: 0
+}
+
+const typeCursor = {
+    leafB: "oak-leaves",
+    treeB: "oak-log",
+    grassB: "grass",
+    dirtB: "dirt",
+    stoneB: "stone"
+}
+
+function addInventory(type) {
+    const tile = document.querySelector(`.${type}B`)
+    tile.classList.add('inventory')
+    countObj[type]++;
+    tile.innerText = countObj[type];
+}
+
+function subInventory(target) {
+    let type;
+    if (cursor === "oak-leaves" && countObj.leaf > 0) {
+        target.add("leaf")
+        countObj.leaf--;
+        type = "leaf"
+    }
+    if (cursor === "oak-log" && countObj.tree > 0) {
+        target.add("tree")
+        countObj.tree--;
+        type = "tree"
+    }
+    if ((cursor === "grass" || cursor === "dirt" || cursor === "stone") && countObj[cursor] > 0) {
+        target.add(cursor)
+        countObj[cursor]--;
+        type = cursor
+    }
+    document.querySelector(`.${type}B`).textContent = countObj[type]
+    if (countObj[type] === 0){
+        const tile = document.querySelector(`.${type}B`)
+        tile.classList.remove("inventory")
+        tile.textContent = ""
+        document.body.style.cursor = "auto"
+    }
+}
+
+function startGame() {
+    createMap()
     document.body.addEventListener("click", (event) => {
         const target = event.target.classList
-        console.log("t",target);
-        if (target.contains(type)) {
-            target.remove(type)
+        console.log(target);
+        if (target.value === "cell") {
+            subInventory(target)
+        }
+        if (target[1] === "diamond-pickaxe" || target[1] === "shears" || target[1] === "diamond-axe" || target[1] === "diamond-shovel") {
+            changeCoursor(target[1])
+        }
+        else if (target[1] === "inventory") {
+            changeCoursor(typeCursor[target[0]])
+        }
+        else if (target.contains("cell")) {
+            removeCell(target)
         }
     })
 }
-function changeCoursor() {
-    const inventory = document.getElementById("inventory")
-    inventory.addEventListener("click", (event) => {
-        const target = event.target.classList
-        if (target.contains(target[1])) {
-            document.body.style.cursor = `url(https://guileless-pegasus-d698c6.netlify.app/cursor/${target[1]}.png), auto`
-        }
-    })
-}
-createMap()
-removeCell("tree")
-removeCell("grass")
-removeCell("dirt")
-removeCell("stone")
-removeCell("leaf")
 
-changeCoursor()
+startGame()

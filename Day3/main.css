@@ -10,7 +10,10 @@ body {
 .cell:hover{
     border: 1px solid black;
 }
+#sky{
+        background-color: rgb(135, 206, 235);
 
+}
 .cell {
     background-color: rgb(135, 206, 235);
     background-size: cover;
@@ -53,6 +56,9 @@ body {
     width: 41px;
     height: 41px;
     background-size: cover;
+    color: white;
+    text-align: center;
+    place-content: center;
 }
 
 .diamond-pickaxe {
@@ -69,4 +75,28 @@ body {
 
 .shears {
     background-image: url("https://guileless-pegasus-d698c6.netlify.app/blocks/shears.webp");
+}
+
+.leafB {
+    background-image: url("https://guileless-pegasus-d698c6.netlify.app/blocks/oak-leaves.webp");
+}
+
+.treeB {
+    background-image: url("https://guileless-pegasus-d698c6.netlify.app/blocks/oak-log.webp");
+}
+
+.grassB {
+    background-image: url("https://guileless-pegasus-d698c6.netlify.app/blocks/grass.webp");
+}
+
+.dirtB {
+    background-image: url("https://guileless-pegasus-d698c6.netlify.app/blocks/dirt.webp");
+}
+
+.stoneB {
+    background-image: url("https://guileless-pegasus-d698c6.netlify.app/blocks/stone.webp");
+}
+
+.bedrockB {
+    background-image: url("https://guileless-pegasus-d698c6.netlify.app/blocks/bedrock.webp");
 }
