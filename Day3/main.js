@@ -125,8 +125,8 @@ function subInventory(target) {
         countObj[cursor]--;
         type = cursor
     }
-    document.querySelector(`.${type}B`).textContent = countObj[type]
-    if (countObj[type] === 0){
+    document.querySelector(`.${type}B`).innerText = countObj[type]
+    if (countObj[type] === 0) {
         const tile = document.querySelector(`.${type}B`)
         tile.classList.remove("inventory")
         tile.textContent = ""
@@ -138,7 +138,6 @@ function startGame() {
     createMap()
     document.body.addEventListener("click", (event) => {
         const target = event.target.classList
-        console.log(target);
         if (target.value === "cell") {
             subInventory(target)
         }
